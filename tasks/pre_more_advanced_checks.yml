@@ -12,8 +12,8 @@
     test -d {{ item }}
   changed_when: false
   loop:
+    - /etc
     - /etc/sysctl.d
-    - /etc/rc.d
 
 - name: Test some commands are available
   command: >-
