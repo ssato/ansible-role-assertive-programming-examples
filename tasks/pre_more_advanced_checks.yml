@@ -25,27 +25,30 @@
     - ip
     - ping
 
-- name: Test default gateway was set
-  command: ip r s default
-  changed_when: false
-  register: _ip_r_s_default_res
+- block:
+    - name: Test default gateway was set
+      command: ip r s default
+      changed_when: false
+      register: _ip_r_s_default_res
 
-- name: Extract the ipaddr of the default gateway found
-  set_fact:
-    _defroute: >-
-      {{ _ip_r_s_default_res.stdout_lines.0 |
-         regex_replace('^default via (.+) dev.*$', '\1') }}
+    - name: Extract the ipaddr of the default gateway found
+      set_fact:
+        _defroute: >-
+          {{ _ip_r_s_default_res.stdout_lines.0 |
+             regex_replace('^default via (.+) dev.*$', '\1') }}
 
-- name: Test if the extracted ipaddr value is ip address
-  assert:
-    that:
-      - _defroute | ipaddr
-    fail_msg: |
-      _defroute: {{ _defroute | d('') }}
+    - name: Test if the extracted ipaddr value is ip address
+      assert:
+        that:
+          - _defroute | ipaddr
+        fail_msg: |
+          _defroute: {{ _defroute | d('') }}
 
-- name: Test the default gateway is reachable
-  command: >-
-    ping -c 1 -w 5 {{ _defroute }}
-  changed_when: false
+    - name: Test the default gateway is reachable
+      command: >-
+        ping -c 1 -w 5 {{ _defroute }}
+      changed_when: false
+  when:
+    - sape_do_ping_gateway_checks
 
 # vim:sw=2:ts=2:et:

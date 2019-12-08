@@ -3,6 +3,8 @@
 - name: Check variables may have primitive values are defined
   assert:
     that:
+      - sape_do_more_advanced_checks is defined
+      - sape_do_ping_gateway_checks is defined
       - sape_a_obj_0 is defined
       - sape_a_bool_0 is defined
       - sape_a_bool_1 is defined
