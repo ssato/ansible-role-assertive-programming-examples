@@ -2,6 +2,7 @@
 # sapi = Abbrev. of ssato.assertive_programming_examples
 
 sape_do_more_advanced_checks: false
+sape_do_ping_gateway_checks: false
 
 sape_a_obj_0:
 
