@@ -1,0 +1,38 @@
+---
+# sapi = Abbrev. of ssato.assertive_programming_examples
+
+sape_do_more_advanced_checks: false
+
+sape_a_obj_0:
+
+sape_a_bool_0: false
+sape_a_bool_1: true
+
+sape_a_str_0: ""
+sape_a_str_1: Hello
+
+sape_a_int_0: 0
+sape_a_int_1: 42
+
+sape_a_list_0: []
+sape_a_list_1:
+  - 0
+  - 1
+  - 2
+  - 3
+
+sape_a_dict_0: {}
+sape_a_dict_1:
+  a: 42
+  b: BBB
+  c:
+    - 2
+    - 5
+  d:
+    e: EEE
+    f: 7
+    g:
+      h: HH
+      i: true
+
+# vim:sw=2:ts=2:et:

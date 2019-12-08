@@ -1,0 +1,27 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+  options:
+    managed: false
+    ansible_connection_options:
+      ansible_connection: local
+lint:
+  name: yamllint
+platforms:
+  - name: instance
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  inventory:
+    group_vars:
+      all:
+        sape_do_more_advanced_checks: true
+verifier:
+  name: ansible
+  lint:
+    name: ansible-lint
+
+# vim:sw=2:ts=2:et:

@@ -1,0 +1,15 @@
+---
+sape_a_dict_1:
+  a: this_is_not_a_number
+  b: BBB
+  c:
+    - 2
+    - 5
+  d:
+    e: EEE
+    f: 7
+    g:
+      h: HH
+      i: true
+
+# vim:sw=2:ts=2:et:

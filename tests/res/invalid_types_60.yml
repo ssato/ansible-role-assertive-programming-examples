@@ -1,0 +1,15 @@
+---
+sape_a_dict_1:
+  a: 42
+  b: BBB
+  c:
+    - 2
+    - 5
+  d:
+    e: EEE
+    f: 7
+    g:
+      h: HH
+      i: this_is_not_a_boolean_value
+
+# vim:sw=2:ts=2:et:

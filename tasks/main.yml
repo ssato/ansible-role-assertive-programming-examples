@@ -1,0 +1,5 @@
+---
+- include_tasks: pre.yml
+- include_tasks: dump.yml
+
+# vim:sw=2:ts=2:et:

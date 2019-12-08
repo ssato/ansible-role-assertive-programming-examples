@@ -1,0 +1,39 @@
+---
+# yamllint disable-line rule:line-length
+# .. seealso:: https://jinja.palletsprojects.com/en/2.10.x/templates/#list-of-builtin-tests
+
+- name: Check the types of the variables may have primitive values
+  assert:
+    that:
+      - sape_a_str_0 is string
+      - sape_a_str_1 is string
+      - sape_a_int_0 is number
+      - sape_a_int_1 is number
+    fail_msg: |
+      - sape_a_str_0: {{ sape_a_str_0 }}
+      - sape_a_str_1: {{ sape_a_str_1 }}
+      - sape_a_int_0: {{ sape_a_int_0 }}
+      - sape_a_int_1: {{ sape_a_int_1 }}
+
+- name: Check the types of the variables may have non primitive values
+  assert:
+    that:
+      - sape_a_list_0 is sequence
+      - sape_a_list_1 is sequence
+      - sape_a_dict_0 is mapping
+      - sape_a_dict_1 is mapping
+      - sape_a_dict_1.a is number
+      - sape_a_dict_1.b is string
+      - sape_a_dict_1.c is sequence
+      - sape_a_dict_1.d is mapping
+      - sape_a_dict_1.d.e is string
+      - sape_a_dict_1.d.f is number
+      - sape_a_dict_1.d.g is mapping
+      - sape_a_dict_1.d.g.h is string
+    fail_msg: |
+      - sape_a_list_0: {{ sape_a_list_0 | to_nice_json }}
+      - sape_a_list_1: {{ sape_a_list_1 | to_nice_json }}
+      - sape_a_dict_0: {{ sape_a_dict_0 | to_nice_json }}
+      - sape_a_dict_1: {{ sape_a_dict_1 | to_nice_json }}
+
+# vim:sw=2:ts=2:et:

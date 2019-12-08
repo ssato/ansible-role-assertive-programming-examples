@@ -1,0 +1,81 @@
+{
+  "type": "object",
+  "properties": {
+    "sape_a_obj_0": {
+      "type": "null"
+    },
+    "sape_a_bool_0": {
+      "type": "boolean"
+    },
+    "sape_a_bool_1": {
+      "type": "boolean"
+    },
+    "sape_a_str_0": {
+      "type": "string"
+    },
+    "sape_a_str_1": {
+      "type": "string"
+    },
+    "sape_a_int_0": {
+      "type": "integer"
+    },
+    "sape_a_int_1": {
+      "type": "integer"
+    },
+    "sape_a_list_0": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sape_a_list_1": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "sape_a_dict_0": {
+      "type": "object",
+      "properties": {}
+    },
+    "sape_a_dict_1": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "integer"
+        },
+        "b": {
+          "type": "string"
+        },
+        "c": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "d": {
+          "type": "object",
+          "properties": {
+            "e": {
+              "type": "string"
+            },
+            "f": {
+              "type": "integer"
+            },
+            "g": {
+              "type": "object",
+              "properties": {
+                "h": {
+                  "type": "string"
+                },
+                "i": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

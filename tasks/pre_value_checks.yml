@@ -1,0 +1,53 @@
+---
+
+- name: Check values of the variables should have primitive values
+  assert:
+    that:
+      - sape_a_bool_0 in [true, false]
+      - sape_a_bool_1 in [true, false]
+
+      # .. note:: https://github.com/ansible/ansible-lint/issues/457
+      # - sape_a_str_0 == ""
+      # - sape_a_str_1 != ""
+      - sape_a_str_0 | length == 0
+      - sape_a_str_1 | length > 0
+      - sape_a_int_0 == 0
+      - sape_a_int_1 != 0
+      - sape_a_int_1 > 0
+    fail_msg: |
+      - sape_a_bool_0: {{ sape_a_bool_0 }}
+      - sape_a_bool_1: {{ sape_a_bool_1 }}
+      - sape_a_str_0: {{ sape_a_str_0 }}
+      - sape_a_str_1: {{ sape_a_str_1 }}
+      - sape_a_int_0: {{ sape_a_int_0 }}
+      - sape_a_int_1: {{ sape_a_int_1 }}
+
+- name: Check values of the variables may have non primitive values
+  assert:
+    that:
+      - not(sape_a_list_0 | bool)
+      # .. note:: This does not look worked unfortunatelly.
+      # - sape_a_list_1 | bool
+      - sape_a_list_1 | length > 0
+      - not(sape_a_dict_0 | bool)
+      # .. note:: This does not look worked too.
+      # - sape_a_dict_1 | bool
+      - sape_a_dict_1 | length > 0
+      - sape_a_dict_1.a != 0
+      - sape_a_dict_1.a > 0
+      - sape_a_dict_1.b | length > 0
+      - sape_a_dict_1.c | length > 0
+      - sape_a_dict_1.d | length > 0
+      - sape_a_dict_1.d.e | length > 0
+      - sape_a_dict_1.d.f != 0
+      - sape_a_dict_1.d.f > 0
+      - sape_a_dict_1.d.g | length > 0
+      - sape_a_dict_1.d.g.h | length > 0
+      - sape_a_dict_1.d.g.i in [true, false]
+    fail_msg: |
+      - sape_a_list_0: {{ sape_a_list_0 | to_nice_json }}
+      - sape_a_list_1: {{ sape_a_list_1 | to_nice_json }}
+      - sape_a_dict_0: {{ sape_a_dict_0 | to_nice_json }}
+      - sape_a_dict_1: {{ sape_a_dict_1 | to_nice_json }}
+
+# vim:sw=2:ts=2:et:
