@@ -1,5 +1,5 @@
 ---
-sudo: required
+# sudo: required
 dist: xenial
 
 language: python
@@ -13,7 +13,7 @@ matrix:
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y bash
+  - sudo apt-get install -y bash iproute2 iputils-ping
 
 install:
   - pip install tox-travis
