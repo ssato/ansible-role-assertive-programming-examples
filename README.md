@@ -3,6 +3,8 @@ ssato.assertive_programming_examples
 
 Ansible example role to demonstrate asseritve programming style in Ansible.
 
+![Test Status](https://img.shields.io/travis/ssato/ansible-role-assertive-programming-examples.png)
+
 Requirements
 ------------
 
