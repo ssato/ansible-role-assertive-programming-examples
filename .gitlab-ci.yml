@@ -1,0 +1,20 @@
+---
+services:
+  - docker:dind
+
+test py37: &default_def
+  image: python:3.7-buster
+  variables:
+    TOXENV: py37
+  before_script:
+    - apt-get -qq update
+    - apt-get install -y bash tox python3-pip iproute2 iputils-ping
+  script:
+    - tox
+
+test py37-ansible29:
+  <<: *default_def
+  variables:
+    TOXENV: py37-ansible29
+
+# vim:sw=2:ts=2:et:
