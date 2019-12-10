@@ -10,10 +10,10 @@
       - sape_a_int_0 is number
       - sape_a_int_1 is number
     fail_msg: |
-      - sape_a_str_0: {{ sape_a_str_0 }}
-      - sape_a_str_1: {{ sape_a_str_1 }}
-      - sape_a_int_0: {{ sape_a_int_0 }}
-      - sape_a_int_1: {{ sape_a_int_1 }}
+      - sape_a_str_0: {{ sape_a_str_0 | d() }}
+      - sape_a_str_1: {{ sape_a_str_1 | d() }}
+      - sape_a_int_0: {{ sape_a_int_0 | d() }}
+      - sape_a_int_1: {{ sape_a_int_1 | d() }}
 
 - name: Check the types of the variables may have non primitive values
   assert:
@@ -31,9 +31,9 @@
       - sape_a_dict_1.d.g is mapping
       - sape_a_dict_1.d.g.h is string
     fail_msg: |
-      - sape_a_list_0: {{ sape_a_list_0 | to_nice_json }}
-      - sape_a_list_1: {{ sape_a_list_1 | to_nice_json }}
-      - sape_a_dict_0: {{ sape_a_dict_0 | to_nice_json }}
-      - sape_a_dict_1: {{ sape_a_dict_1 | to_nice_json }}
+      - sape_a_list_0: {{ sape_a_list_0 | d() | to_nice_json }}
+      - sape_a_list_1: {{ sape_a_list_1 | d() | to_nice_json }}
+      - sape_a_dict_0: {{ sape_a_dict_0 | d() | to_nice_json }}
+      - sape_a_dict_1: {{ sape_a_dict_1 | d() | to_nice_json }}
 
 # vim:sw=2:ts=2:et:
