@@ -2,6 +2,10 @@
 # yamllint disable-line rule:line-length
 # .. seealso:: https://jinja.palletsprojects.com/en/2.10.x/templates/#list-of-builtin-tests
 
+- name: Dump types
+  debug:
+    msg: "sape_a_bool_1: {{ sape_a_bool_1 | type_debug }}"
+
 - name: Check the types of the variables may have primitive values
   assert:
     that:
@@ -19,12 +23,18 @@
   assert:
     that:
       - sape_a_list_0 is sequence
+      - >-
+        {{ sape_a_list_0 | reject("number") | list | length == 0 }}
       - sape_a_list_1 is sequence
+      - >-
+        {{ sape_a_list_1 | reject("number") | list | length == 0 }}
       - sape_a_dict_0 is mapping
       - sape_a_dict_1 is mapping
       - sape_a_dict_1.a is number
       - sape_a_dict_1.b is string
       - sape_a_dict_1.c is sequence
+      - >-
+        {{ sape_a_dict_1.c | reject("number") | list | length == 0 }}
       - sape_a_dict_1.d is mapping
       - sape_a_dict_1.d.e is string
       - sape_a_dict_1.d.f is number
