@@ -1,11 +1,8 @@
 # python:
 coveralls
-# disable this if 'pkg_resources.VersionConflict' error happens:
-flake8 < 3.5.0
+flake8
 nose
-# stick the version to avoild the error:
-# module 'pycodestyle' has no attribute 'break_around_binary_operator, etc.
-pycodestyle<2.4.0
+pycodestyle
 pylint
 
 # ansible:
