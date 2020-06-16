@@ -34,7 +34,7 @@ EOM
 }
 
 @test "Check styles of all playbook files" {
-    run ansible-lint playbook.yml
+    run ansible-lint -x 303 playbook.yml
     test_success
 }
 
