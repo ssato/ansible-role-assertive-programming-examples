@@ -1,9 +1,12 @@
 ---
-# This is an example playbook to execute Ansible tests.
-
 - name: Verify
   hosts: all
+  gather_facts: false
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+    - name: test if route is set
+      command: ip r s
+      register: res
+      changed_when:
+        - res.rc != 0
+
+# vim:sw=2:ts=2:et:

@@ -1,27 +1,17 @@
 ---
 dependency:
   name: galaxy
+lint: |
+  set -e
+  yamllint -c molecule/default/yamllint.cfg .
+  ansible-lint .
 driver:
-  name: delegated
-  options:
-    managed: false
-    ansible_connection_options:
-      ansible_connection: local
-lint:
-  name: yamllint
+  name: podman
 platforms:
   - name: instance
+    image: "docker.io/pycontribs/centos:8"
+    pre_build_image: true
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
-  inventory:
-    group_vars:
-      all:
-        sape_do_more_advanced_checks: true
 verifier:
   name: ansible
-  lint:
-    name: ansible-lint
-
-# vim:sw=2:ts=2:et:
