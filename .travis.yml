@@ -1,4 +1,7 @@
 ---
+# https://docs.travis-ci.com/user/reference/bionic/
+dist: bionic
+
 language: python
 python:
   - 3.6
@@ -12,16 +15,20 @@ matrix:
     - python: 3.7
       env: TOXENV=py37-ansible29
 
+# .. todo::
+#addons:
+#  apt:
+#    sources:
+
 before_install:
   # yamllint disable rule:line-length
 
   # .. seealso:: https://github.com/junaruga/podman-experiment/blob/master/.travis.yml
   # .. seealso:: https://travis-ci.community/t/podman-libpod-support/6823/6
+  # .. seealso:: https://podman.io/getting-started/installation.html
 
-  # https://github.com/containers/libpod/blob/master/install.md#ubuntu
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq -y software-properties-common uidmap
-  - sudo add-apt-repository -y ppa:projectatomic/ppa
+  - sudo sh -c "echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+  - curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_18.04/Release.key | sudo apt-key add -
   - sudo apt-get update -qq
   - sudo apt-get -qq -y install podman
 
@@ -42,7 +49,6 @@ before_install:
 
   # yamllint enable rule:line-length
 
-  - sudo apt-get -qq update
   - sudo apt-get install -y bash iproute2 iputils-ping
 
 install:
