@@ -1,18 +1,6 @@
 ---
-- name: Run integration tests
-  hosts: localhost
-  gather_facts: false
-  vars:
-    pkgs:
-      - iproute
-      - iputils
-  tasks:
-    - name: Test if necessary RPMs are installed
-      command: "rpm -q {{ pkgs | join(' ') }}"
-      changed_when: false
-
-    - name: Include the role to test
-      include_role:
-        name: ssato.assertive_programming_examples
+- import_playbook: ../molecule/default/create.yml
+- import_playbook: ../molecule/default/converge.yml
+- import_playbook: ../molecule/default/destroy.yml
 
 # vim:sw=2:ts=2:et:

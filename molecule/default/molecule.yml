@@ -3,14 +3,18 @@ dependency:
   name: galaxy
 lint: |
   set -e
-  yamllint -c molecule/default/yamllint.cfg .
+  yamllint -c molecule/podman/yamllint.cfg .
   ansible-lint .
+# .. seealso::
+#    https://molecule.readthedocs.io/en/latest/configuration.html#delegated
 driver:
-  name: podman
+  name: delegated
+  options:
+    managed: false
+    ansible_connection_options:
+      ansible_connection: local
 platforms:
-  - name: instance
-    image: "docker.io/pycontribs/centos:8"
-    pre_build_image: true
+  - name: instance-localhost
 provisioner:
   name: ansible
 verifier:
