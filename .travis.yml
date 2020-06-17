@@ -13,8 +13,10 @@ matrix:
       env: TOXENV=py37-ansible29
 
 before_install:
+  # yamllint disable rule:line-length
   # .. seealso:: https://github.com/junaruga/podman-experiment/blob/master/.travis.yml
   # .. seealso:: https://travis-ci.community/t/podman-libpod-support/6823/6
+  # yamllint enable rule:line-length
 
   # https://github.com/containers/libpod/blob/master/install.md#ubuntu
   - sudo apt-get update -qq
