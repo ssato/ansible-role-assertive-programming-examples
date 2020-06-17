@@ -14,9 +14,9 @@ matrix:
 
 before_install:
   # yamllint disable rule:line-length
+
   # .. seealso:: https://github.com/junaruga/podman-experiment/blob/master/.travis.yml
   # .. seealso:: https://travis-ci.community/t/podman-libpod-support/6823/6
-  # yamllint enable rule:line-length
 
   # https://github.com/containers/libpod/blob/master/install.md#ubuntu
   - sudo apt-get update -qq
@@ -38,6 +38,8 @@ before_install:
   - ls -1 /etc/containers/registries.conf || true
   - sudo mkdir -p /etc/containers
   - echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
+
+  # yamllint enable rule:line-length
 
   - sudo apt-get -qq update
   - sudo apt-get install -y bash iproute2 iputils-ping
