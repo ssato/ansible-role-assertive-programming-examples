@@ -1,0 +1,21 @@
+---
+dependency:
+  name: galaxy
+lint: |
+  set -e
+  yamllint -c molecule/podman/yamllint.cfg .
+  ansible-lint .
+# .. seealso::
+#    https://molecule.readthedocs.io/en/latest/configuration.html#delegated
+driver:
+  name: delegated
+  options:
+    managed: false
+    ansible_connection_options:
+      ansible_connection: local
+platforms:
+  - name: instance-localhost
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

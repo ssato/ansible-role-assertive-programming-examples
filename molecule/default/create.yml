@@ -1,0 +1,15 @@
+---
+- name: Create
+  hosts: all
+  gather_facts: false
+  vars:
+    cmds:
+      - ip
+      - ping
+  # Nothing to do. Just checks some.
+  tasks:
+    - name: Test if necessary commands are available
+      command: "which {{ cmds | join(' ') }}"
+      changed_when: false
+
+# vim:sw=2:ts=2:et:
