@@ -3,7 +3,7 @@ dependency:
   name: galaxy
 lint: |
   set -e
-  yamllint -c molecule/default/yamllint.cfg .
+  yamllint -c molecule/podman/yamllint.cfg .
   ansible-lint .
 driver:
   name: podman
