@@ -29,6 +29,7 @@ before_install:
   - podman --version
   - podman version
   - podman info --debug
+  - podman pull docker.io/pycontribs/centos:8
   - apt-cache show podman
   - dpkg-query -L podman
 
