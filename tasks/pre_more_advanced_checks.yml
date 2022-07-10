@@ -15,20 +15,23 @@
     - /etc
     - /etc/sysctl.d
 
-- name: Ensure some packages provide necessary commands are installed
-  ansible.builtin.package:
-    name: "{{ sape_command_packages }}"
-    state: present
-  when:
-    - ansible_user_uid == 0
+- name: Preparations for some more checks
+  block:
+    - name: Test some ansible.builtin.commands are available
+      ansible.builtin.command: >-
+        which bash ip ping
+      register: __result
+      changed_when: false
+      ignore_errors: true
 
-- name: Test some ansible.builtin.commands are available
-  ansible.builtin.command: >-
-    which bash ip ping
-  register: __result
-  changed_when: false
-  failed_when:
-    - __result.rc != 0
+    - name: Ensure some packages provide necessary commands are installed
+      ansible.builtin.package:
+        name: "{{ sape_command_packages }}"
+        state: present
+      when:
+        - __result.rc != 0
+  when:
+    - sape_do_ping_gateway_checks
 
 - name: Some more checks
   block:
@@ -46,7 +49,7 @@
     - name: Test if the extracted ipaddr value is ip address
       ansible.builtin.assert:
         that:
-          - _defroute | ipaddr
+          - _defroute | ansible.utils.ipaddr
         fail_msg: |
           _defroute: {{ _defroute | d('') }}
 
