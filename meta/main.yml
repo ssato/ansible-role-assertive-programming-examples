@@ -1,16 +1,16 @@
 ---
 galaxy_info:
-  name: assertive_programming_examples
+  role_name: assertive_programming_examples
+  namespace: ssato
   author: Satoru SATOH
   description: Example role to demonstrate asseritve programming in Ansible
 
   # yamllint disable-line rule:line-length
   issue_tracker_url: https://github.com/ssato/ansible-role-assertive-programming-examples/issues
 
-  license:
-    - MIT
+  license: MIT
 
-  min_ansible_version: 2.5
+  min_ansible_version: '2.5'
 
   platforms:
     - name: EL
