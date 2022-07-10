@@ -3,15 +3,21 @@ dependency:
   name: galaxy
 lint: |
   set -e
-  yamllint -c molecule/podman/yamllint.cfg .
-  ansible-lint .
+  yamllint -c molecule/yamllint.cfg .
+  ansible-lint -c molecule/dot.ansible-lint .
 driver:
   name: podman
 platforms:
   - name: instance
-    image: "docker.io/pycontribs/centos:8"
+    image: docker.io/ssato079/centos-stream-python-systemd:8
     pre_build_image: true
 provisioner:
   name: ansible
+  options:
+    vvv: true
+    become: true
 verifier:
   name: ansible
+  options:
+    vvv: true
+    become: true
