@@ -1,0 +1,114 @@
+---
+# .. seealso:: defaults/**/*.yml
+# .. seealso::
+#    https://github.com/ansible/schemas/blob/main/f/ansible-argument-specs.json
+argument_specs:
+  main:
+    short_description: Assertive programming in Ansible Role
+    description: Example role to demonstrate asseritve programming in Ansible
+    author:
+      - Satoru SATOH <satoru.satoh@gmail.com>
+    options:
+      sape_do_more_advanced_checks:
+        description: Option to enable more advanced checks
+        type: bool
+        default: false
+
+      sape_do_ping_gateway_checks:
+        description: Option to enable ping checks
+        type: bool
+        default: false
+
+      sape_a_bool_0:
+        description: Bool option 0
+        type: bool
+        required: true
+
+      sape_a_bool_1:
+        description: Bool option 1
+        type: bool
+        required: true
+
+      sape_a_str_0:
+        description: String option 0
+        type: str
+        required: true
+
+      sape_a_str_1:
+        description: String option 1
+        type: str
+        required: true
+
+      sape_a_int_0:
+        description: Int option 0
+        type: int
+        required: true
+
+      sape_a_list_0:
+        description: List option 0
+        type: list
+        required: true
+
+      sape_a_list_1:
+        description: List option 1
+        type: list
+        elements: int
+        required: true
+
+      sape_a_dict_0:
+        description: Dict option 0
+        type: dict
+        required: true
+
+      sape_a_dict_1:
+        description: Dict option 1 must have children
+        type: dict
+        required: true
+        options:
+          a:
+            description: A child (int) of dict sape_a_dict_1
+            type: int
+            required: true
+          b:
+            description: A child (str) of dict sape_a_dict_1
+            type: str
+            required: true
+          c:
+            description: A child (list) of dict sape_a_dict_1
+            type: list
+            elements: int
+            required: true
+          d:
+            description: A child (dict) of dict sape_a_dict_1
+            type: dict
+            required: true
+            options:
+              e:
+                description: A child (str) of dict sape_a_dict_1.d
+                type: str
+                required: true
+              f:
+                description: A child (int) of dict sape_a_dict_1.d
+                type: int
+                required: true
+              g:
+                description: A child (dict) of dict sape_a_dict_1.d
+                type: dict
+                required: true
+                options:
+                  h:
+                    description: A child (str) of dict sape_a_dict_1.d.g
+                    type: str
+                    required: true
+                  i:
+                    description: A child (bool) of dict sape_a_dict_1.d.g
+                    type: bool
+                    default: true
+
+      sape_command_packages:
+        description: A list of required packages to install
+        type: list
+        elements: str
+        default:
+          - iproute
+          - iputils
