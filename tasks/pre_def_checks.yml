@@ -1,7 +1,7 @@
 ---
 
 - name: Check variables may have primitive values are defined
-  assert:
+  ansible.builtin.assert:
     that:
       - sape_do_more_advanced_checks is defined
       - sape_do_ping_gateway_checks is defined
@@ -14,7 +14,7 @@
       - sape_a_int_1 is defined
 
 - name: Check variables may have non primitive values are defined
-  assert:
+  ansible.builtin.assert:
     that:
       - sape_a_list_0 is defined
       - sape_a_list_1 is defined

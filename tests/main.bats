@@ -29,12 +29,12 @@ EOM
 }
 
 @test "Lint all yaml files" {
-    run yamllint --strict .
+    run yamllint --strict -c yamllint.cfg .
     test_success
 }
 
 @test "Check styles of all playbook files" {
-    run ansible-lint -x 303 playbook.yml
+    run ansible-lint -x 303 -c dot.ansible-lint playbook.yml
     test_success
 }
 

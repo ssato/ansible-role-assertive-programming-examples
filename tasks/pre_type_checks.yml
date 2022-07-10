@@ -3,24 +3,32 @@
 # .. seealso:: https://jinja.palletsprojects.com/en/2.10.x/templates/#list-of-builtin-tests
 
 - name: Dump types
-  debug:
+  ansible.builtin.debug:
     msg: "sape_a_bool_1: {{ sape_a_bool_1 | type_debug }}"
 
 - name: Check the types of the variables may have primitive values
-  assert:
+  ansible.builtin.assert:
     that:
       - sape_a_str_0 is string
       - sape_a_str_1 is string
       - sape_a_int_0 is number
       - sape_a_int_1 is number
+      - sape_a_bool_0 is boolean
+      - sape_a_bool_1 is boolean
+      - sape_do_more_advanced_checks is boolean
+      - sape_do_ping_gateway_checks is boolean
     fail_msg: |
       - sape_a_str_0: {{ sape_a_str_0 | d() }}
       - sape_a_str_1: {{ sape_a_str_1 | d() }}
       - sape_a_int_0: {{ sape_a_int_0 | d() }}
       - sape_a_int_1: {{ sape_a_int_1 | d() }}
+      - sape_a_bool_0: {{ sape_a_bool_0 | d() }}
+      - sape_a_bool_1: {{ sape_a_bool_1 | d() }}
+      - sape_do_more_advanced_checks: {{ sape_do_more_advanced_checks | d() }}
+      - sape_do_ping_gateway_checks: {{ sape_do_ping_gateway_checks | d() }}
 
 - name: Check the types of the variables may have non primitive values
-  assert:
+  ansible.builtin.assert:
     that:
       - sape_a_list_0 is sequence
       - >-

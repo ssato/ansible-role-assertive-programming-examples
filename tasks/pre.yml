@@ -1,9 +1,14 @@
 ---
-- include_tasks: pre_def_checks.yml
-- include_tasks: pre_type_checks.yml
-- include_tasks: pre_value_checks.yml
-- include_tasks: pre_more_advanced_checks.yml
+- name: Definition checks
+  ansible.builtin.include_tasks: pre_def_checks.yml
+
+- name: Type checks
+  ansible.builtin.include_tasks: pre_type_checks.yml
+
+- name: Value checks
+  ansible.builtin.include_tasks: pre_value_checks.yml
+
+- name: More advanced checks
+  ansible.builtin.include_tasks: pre_more_advanced_checks.yml
   when:
     - sape_do_more_advanced_checks | d(false)
-
-# vim:sw=2:ts=2:et:

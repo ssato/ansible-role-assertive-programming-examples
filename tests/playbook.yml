@@ -1,6 +1,1 @@
----
-- import_playbook: ../molecule/default/create.yml
-- import_playbook: ../molecule/default/converge.yml
-- import_playbook: ../molecule/default/destroy.yml
-
-# vim:sw=2:ts=2:et:
+../molecule/default/converge.yml
