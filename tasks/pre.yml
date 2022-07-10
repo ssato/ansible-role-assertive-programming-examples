@@ -12,3 +12,8 @@
   ansible.builtin.include_tasks: pre_more_advanced_checks.yml
   when:
     - sape_do_more_advanced_checks | d(false)
+
+- name: More advanced and extra checks
+  ansible.builtin.include_tasks: pre_more_advanced_extra_checks.yml
+  when:
+    - sape_do_ping_gateway_checks | d(false)
