@@ -6,6 +6,7 @@
 function setup () {
     export INVENTORY=${1:-hosts}
     cd $BATS_TEST_DIRNAME
+    ansible-galaxy install -r requirements.yml
 }
 
 function test_success () {
