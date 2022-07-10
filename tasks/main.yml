@@ -1,5 +1,6 @@
 ---
-- include_tasks: pre.yml
-- include_tasks: dump.yml
+- name: Pre checks
+  ansible.builtin.include_tasks: pre.yml
 
-# vim:sw=2:ts=2:et:
+- name: Dump results
+  ansible.builtin.include_tasks: dump.yml

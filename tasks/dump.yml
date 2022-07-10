@@ -1,7 +1,6 @@
 ---
-
 - name: Dump variables
-  debug:
+  ansible.builtin.debug:
     msg: |
       - sape_a_obj_0: {{ sape_a_obj_0 }}
       - sape_a_bool_0: {{ sape_a_bool_0 }}

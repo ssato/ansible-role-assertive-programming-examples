@@ -1,6 +1,6 @@
 ---
 - name: Test some files exist
-  command: >-
+  ansible.builtin.command: >-
     test -f {{ item }}
   changed_when: false
   loop:
@@ -8,44 +8,50 @@
     - /etc/sysctl.conf
 
 - name: Test some dirs exist
-  command: >-
+  ansible.builtin.command: >-
     test -d {{ item }}
   changed_when: false
   loop:
     - /etc
     - /etc/sysctl.d
 
-- name: Test some commands are available
-  command: >-
-    which {{ item }}
-  changed_when: false
-  loop:
-    - which
-    - bash
-    - ip
-    - ping
+- name: Ensure some packages provide necessary commands are installed
+  ansible.builtin.package:
+    name: "{{ sape_command_packages }}"
+    state: present
+  when:
+    - ansible_user_uid == 0
 
-- block:
+- name: Test some ansible.builtin.commands are available
+  ansible.builtin.command: >-
+    which bash ip ping
+  register: __result
+  changed_when: false
+  failed_when:
+    - __result.rc != 0
+
+- name: Some more checks
+  block:
     - name: Test default gateway was set
-      command: ip r s default
+      ansible.builtin.command: ip r s default
       changed_when: false
       register: _ip_r_s_default_res
 
     - name: Extract the ipaddr of the default gateway found
-      set_fact:
+      ansible.builtin.set_fact:
         _defroute: >-
           {{ _ip_r_s_default_res.stdout_lines.0 |
              regex_replace('^default via (.+) dev.*$', '\1') }}
 
     - name: Test if the extracted ipaddr value is ip address
-      assert:
+      ansible.builtin.assert:
         that:
           - _defroute | ipaddr
         fail_msg: |
           _defroute: {{ _defroute | d('') }}
 
     - name: Test the default gateway is reachable
-      command: >-
+      ansible.builtin.command: >-
         ping -c 1 -w 5 {{ _defroute }}
       changed_when: false
   when:

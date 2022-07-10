@@ -1,13 +1,8 @@
 ---
 
 - name: Check values of the variables should have primitive values
-  assert:
+  ansible.builtin.assert:
     that:
-      - sape_do_more_advanced_checks in [true, false]
-      - sape_do_ping_gateway_checks in [true, false]
-      - sape_a_bool_0 in [true, false]
-      - sape_a_bool_1 in [true, false]
-
       # .. note:: https://github.com/ansible/ansible-lint/issues/457
       # - sape_a_str_0 == ""
       # - sape_a_str_1 != ""
@@ -17,17 +12,13 @@
       - sape_a_int_1 != 0
       - sape_a_int_1 > 0
     fail_msg: |
-      - sape_do_more_advanced_checks: {{ sape_do_more_advanced_checks }}
-      - sape_do_ping_gateway_checks: {{ sape_do_ping_gateway_checks }}
-      - sape_a_bool_0: {{ sape_a_bool_0 }}
-      - sape_a_bool_1: {{ sape_a_bool_1 }}
       - sape_a_str_0: {{ sape_a_str_0 }}
       - sape_a_str_1: {{ sape_a_str_1 }}
       - sape_a_int_0: {{ sape_a_int_0 }}
       - sape_a_int_1: {{ sape_a_int_1 }}
 
 - name: Check values of the variables may have non primitive values
-  assert:
+  ansible.builtin.assert:
     that:
       - not(sape_a_list_0 | bool)
       # .. note:: This does not look worked unfortunatelly.
