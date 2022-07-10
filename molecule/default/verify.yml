@@ -2,11 +2,14 @@
 - name: Verify
   hosts: all
   gather_facts: false
+  vars:
+    sape_do_more_advanced_checks: true
+    sape_do_ping_gateway_checks: true
   tasks:
     - name: test if route is set
-      command: ip r s
-      register: res
+      ansible.builtin.command: ip r s
+      register: __result
       changed_when:
-        - res.rc != 0
-
-# vim:sw=2:ts=2:et:
+        - __result.rc != 0
+      failed_when:
+        - __result.rc != 0
