@@ -4,12 +4,7 @@
   gather_facts: false
   vars:
     sape_do_more_advanced_checks: true
-    sape_do_ping_gateway_checks: true
-  tasks:
-    - name: test if route is set
-      ansible.builtin.command: ip r s
-      register: __result
-      changed_when:
-        - __result.rc != 0
-      failed_when:
-        - __result.rc != 0
+    # FIXME: It's not working well in some CI environments.
+    # sape_do_ping_gateway_checks: true
+  roles:
+    - ssato.assertive_programming_examples
