@@ -1,0 +1,3 @@
+---
+# It's relative to tests/group_vars.d/.
+_GROUP_VARS_DIR: ng/0120_values
