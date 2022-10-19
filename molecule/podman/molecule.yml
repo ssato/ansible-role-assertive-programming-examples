@@ -23,7 +23,7 @@ provisioner:
     verify: ../default/verify.yml
   inventory:
     links:
-      group_vars: ../default/group_vars.d/${_GROUP_VARS_DIR:-00_default}
+      group_vars: ../../tests/group_vars.d/${_GROUP_VARS_DIR:-00_default}
 verifier:
   name: ansible
   options:

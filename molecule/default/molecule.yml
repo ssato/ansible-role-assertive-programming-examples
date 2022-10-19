@@ -21,6 +21,6 @@ provisioner:
   name: ansible
   inventory:
     links:
-      group_vars: group_vars.d/${_GROUP_VARS_DIR:-00_default}
+      group_vars: ../../tests/group_vars.d/${_GROUP_VARS_DIR:-00_default}
 verifier:
   name: ansible
