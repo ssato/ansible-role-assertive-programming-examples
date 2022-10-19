@@ -31,6 +31,7 @@
   ansible.builtin.assert:
     that:
       - sape_a_list_0 is sequence
+      - sape_a_list_0 is iterable
       - >-
         {{ sape_a_list_0 | reject("number") | list | length == 0 }}
       - sape_a_list_1 is sequence
@@ -41,6 +42,7 @@
       - sape_a_dict_1.a is number
       - sape_a_dict_1.b is string
       - sape_a_dict_1.c is sequence
+      - sape_a_dict_1.c is iterable
       - >-
         {{ sape_a_dict_1.c | reject("number") | list | length == 0 }}
       - sape_a_dict_1.d is mapping
