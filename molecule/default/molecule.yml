@@ -16,7 +16,7 @@ driver:
     ansible_connection_options:
       ansible_connection: local
 platforms:
-  - name: instance-localhost
+  - name: instance-localhost-${TOX_ENVNAME}
 provisioner:
   name: ansible
   inventory:
