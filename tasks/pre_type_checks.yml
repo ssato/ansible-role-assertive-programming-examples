@@ -35,6 +35,7 @@
       - >-
         {{ sape_a_list_0 | reject("number") | list | length == 0 }}
       - sape_a_list_1 is sequence
+      - sape_a_list_1 is iterable
       - >-
         {{ sape_a_list_1 | reject("number") | list | length == 0 }}
       - sape_a_dict_0 is mapping
