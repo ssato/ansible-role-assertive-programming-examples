@@ -18,6 +18,12 @@ provisioner:
   options:
     vvv: true
     become: true
+  playbooks:
+    converge: ../default/converge.yml
+    verify: ../default/verify.yml
+  inventory:
+    links:
+      group_vars: ../default/group_vars.d/${_GROUP_VARS_DIR:-00_default}
 verifier:
   name: ansible
   options:

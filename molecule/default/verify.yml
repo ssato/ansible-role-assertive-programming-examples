@@ -1,10 +1,11 @@
 ---
+# .. note::
+#    THis role has builtin tests so that there is no need to run more
+#    additional tests.
 - name: Verify
   hosts: all
   gather_facts: false
-  vars:
-    sape_do_more_advanced_checks: true
-    # FIXME: It's not working well in some CI environments.
-    # sape_do_ping_gateway_checks: true
-  roles:
-    - ssato.assertive_programming_examples
+  tasks:
+    - name: Do nothing meaningful
+      debug:
+        var: sape_do_more_advanced_checks
