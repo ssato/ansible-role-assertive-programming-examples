@@ -8,6 +8,9 @@
       # - sape_a_str_1 != ""
       - sape_a_str_0 | length == 0
       - sape_a_str_1 | length > 0
+      - sape_a_str_uuid_v4 | length > 0
+      - sape_uuid_v4_regexp | length > 0
+      - sape_a_str_uuid_v4 is regex(sape_uuid_v4_regexp)
       - sape_a_int_0 == 0
       - sape_a_int_1 != 0
       - sape_a_int_1 > 0

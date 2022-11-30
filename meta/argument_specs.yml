@@ -39,6 +39,16 @@ argument_specs:
         type: str
         required: true
 
+      sape_a_str_uuid_v4:
+        description: UUID v4 textual representation
+        type: str
+        required: true
+
+      sape_uuid_v4_regexp:
+        description: regexp for UUID v4 textual representation
+        type: str
+        required: true
+
       sape_a_int_0:
         description: Int option 0
         type: int
