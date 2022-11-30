@@ -12,6 +12,11 @@ sape_a_bool_1: true
 sape_a_str_0: ""
 sape_a_str_1: Hello
 
+# ex. python3 -c 'import uuid; print(uuid.uuid4())'
+sape_a_str_uuid_v4: d86b2a85-897d-4eca-803d-8c2bf4b540b2
+sape_uuid_v4_regexp: >-
+  ^(?:[0-9a-f]{8})-(?:(?:[0-9a-f]{4})-){3}(?:[0-9a-f]{12})$
+
 sape_a_int_0: 0
 sape_a_int_1: 42
 

@@ -10,6 +10,8 @@
       - sape_a_bool_1 is defined
       - sape_a_str_0 is defined
       - sape_a_str_1 is defined
+      - sape_a_str_uuid_v4 is defined
+      - sape_uuid_v4_regexp is defined
       - sape_a_int_0 is defined
       - sape_a_int_1 is defined
 

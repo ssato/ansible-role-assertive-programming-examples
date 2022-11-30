@@ -11,6 +11,8 @@
     that:
       - sape_a_str_0 is string
       - sape_a_str_1 is string
+      - sape_a_str_uuid_v4 is string
+      - sape_uuid_v4_regexp is string
       - sape_a_int_0 is number
       - sape_a_int_1 is number
       - sape_a_bool_0 is boolean
