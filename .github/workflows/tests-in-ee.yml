@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: quay.io/ansible/awx-ee:latest
+      options: --user 1001
       env:
         TOXENV: ${{ matrix.test.tox_env }}
 
