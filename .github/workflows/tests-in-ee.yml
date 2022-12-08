@@ -19,8 +19,10 @@ jobs:
       matrix:
         python-version:
           - 3.8
-          - 3.9
-          - "3.10"
+          # Disable the followings because the version of python in the
+          # container image is 3.8 only.
+          # - 3.9
+          # - "3.10"
 
     steps:
       - uses: actions/checkout@v3
