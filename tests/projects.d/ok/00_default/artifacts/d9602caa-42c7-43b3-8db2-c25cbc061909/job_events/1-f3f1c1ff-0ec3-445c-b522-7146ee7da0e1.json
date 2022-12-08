@@ -1,1 +1,0 @@
-{"event": "verbose", "uuid": "f3f1c1ff-0ec3-445c-b522-7146ee7da0e1", "counter": 1, "stdout": "\u001b[0;31mERROR! the playbook: converge.yml could not be found\u001b[0m", "start_line": 0, "end_line": 1, "runner_ident": "d9602caa-42c7-43b3-8db2-c25cbc061909", "created": "2022-12-08T08:53:24.618895"}
