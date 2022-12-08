@@ -1,0 +1,75 @@
+
+PLAY [Converge] ****************************************************************
+
+TASK [ssato.assertive_programming_examples : Validating arguments against arg spec 'main' - Assertive programming in Ansible Role] ***
+[0;32mok: [localhost][0m
+
+TASK [ssato.assertive_programming_examples : Pre checks] ***********************
+[0;36mincluded: /home/ssato/repos/public/github.com/ssato/ansible-role-assertive-programming-examples.git/tasks/pre.yml for localhost[0m
+
+TASK [ssato.assertive_programming_examples : Definition checks] ****************
+[0;36mincluded: /home/ssato/repos/public/github.com/ssato/ansible-role-assertive-programming-examples.git/tasks/pre_def_checks.yml for localhost[0m
+
+TASK [ssato.assertive_programming_examples : Check variables may have primitive values are defined] ***
+[0;32mok: [localhost] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [ssato.assertive_programming_examples : Check variables may have non primitive values are defined] ***
+[0;32mok: [localhost] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [ssato.assertive_programming_examples : Type checks] **********************
+[0;36mincluded: /home/ssato/repos/public/github.com/ssato/ansible-role-assertive-programming-examples.git/tasks/pre_type_checks.yml for localhost[0m
+
+TASK [ssato.assertive_programming_examples : Dump types] ***********************
+[0;32mok: [localhost] => {[0m
+[0;32m    "msg": "sape_a_bool_1: bool"[0m
+[0;32m}[0m
+
+TASK [ssato.assertive_programming_examples : Check the types of the variables may have primitive values] ***
+[0;32mok: [localhost] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [ssato.assertive_programming_examples : Check the types of the variables may have non primitive values] ***
+[0;32mok: [localhost] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [ssato.assertive_programming_examples : Value checks] *********************
+[0;36mincluded: /home/ssato/repos/public/github.com/ssato/ansible-role-assertive-programming-examples.git/tasks/pre_value_checks.yml for localhost[0m
+
+TASK [ssato.assertive_programming_examples : Check values of the variables should have primitive values] ***
+[0;32mok: [localhost] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [ssato.assertive_programming_examples : Check values of the variables may have non primitive values] ***
+[0;32mok: [localhost] => {[0m
+[0;32m    "changed": false,[0m
+[0;32m    "msg": "All assertions passed"[0m
+[0;32m}[0m
+
+TASK [ssato.assertive_programming_examples : More advanced checks] *************
+[0;36mskipping: [localhost][0m
+
+TASK [ssato.assertive_programming_examples : More advanced and extra checks] ***
+[0;36mskipping: [localhost][0m
+
+TASK [ssato.assertive_programming_examples : Dump results] *********************
+[0;36mincluded: /home/ssato/repos/public/github.com/ssato/ansible-role-assertive-programming-examples.git/tasks/dump.yml for localhost[0m
+
+TASK [ssato.assertive_programming_examples : Dump variables] *******************
+[0;32mok: [localhost] => {[0m
+[0;32m    "msg": "- sape_a_obj_0: \n- sape_a_bool_0: False\n- sape_a_bool_1: True\n- sape_a_str_0: ''\n- sape_a_str_1: 'Hello'\n- sape_a_int_0: 0\n- sape_a_int_1: 42\n- sape_a_list_0: []\n- sape_a_list_1: [\n    0,\n    1,\n    2,\n    3\n]\n- sape_a_dict_0: {}\n- sape_a_dict_1: {\n    \"a\": 42,\n    \"b\": \"BBB\",\n    \"c\": [\n        2,\n        5\n    ],\n    \"d\": {\n        \"e\": \"EEE\",\n        \"f\": 7,\n        \"g\": {\n            \"h\": \"HH\",\n            \"i\": true\n        }\n    }\n}\n"[0m
+[0;32m}[0m
+
+PLAY RECAP *********************************************************************
+[0;32mlocalhost[0m                  : [0;32mok=14  [0m changed=0    unreachable=0    failed=0    [0;36mskipped=2   [0m rescued=0    ignored=0   

@@ -1,0 +1,4 @@
+---
+# .. seealso::
+# https://ansible-runner.readthedocs.io/en/stable/intro/#the-env-directory
+job_timeout: 600
