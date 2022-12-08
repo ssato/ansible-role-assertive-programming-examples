@@ -10,7 +10,7 @@ lint: |
 driver:
   name: podman
 platforms:
-  - name: instance
+  - name: instance-${TOX_ENVNAME}
     image: docker.io/ssato079/centos-stream-python-systemd:8
     pre_build_image: true
 provisioner:
