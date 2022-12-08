@@ -2,19 +2,38 @@
 set -e -o pipefail
 
 
-ok_ng=${1:-ok}
-
 testsdir=${0%/*}
 
+ok_ng=${1:-ok}
+ee_image=${2:-quay.io/ansible/awx-ee:latest}
+
+project_dirs=${testsdir:?}/projects.d/${ok_ng}/*
+
+# @param project_dir  project dir where playbook and test data exist
+function run_ansible_runner () {
+    local project_dir=$1
+
+    echo "[Info] project dir: ${project_dir}"
+    ansible-runner run ${project_dir} \
+        --playbook converge.yml \
+        --container-image ${ee_image} \
+        --rotate-artifacts 1 \
+        --omit-event-data \
+        --only-failed-event-data \
+        --omit-env-files
+}
+
+
+# main
+podman pull ${ee_image} || docker pull ${ee_image}
+
 if test "${ok_ng:?}" = "ok"; then
-    for project_dir in projects.d/${ok_ng}/*; do
-        echo "[Info] dir=${project_dir}"
-        ansible-runner run ${project_dir} -p converge.yml
+    for prj_dir in ${project_dirs:?}; do
+        run_ansible_runner ${prj_dir}
     done
 else
-    for project_dir in projects.d/${ok_ng}/*; do
-        echo "[Info] dir=${project_dir}"
+    for prj_dir in ${project_dirs:?}; do
         # Invert the exit code because this should fail as expected.
-        ansible-runner run ${project_dir} -p converge.yml && false || :
+        run_ansible_runner ${prj_dir} && false || :
     done
 fi
