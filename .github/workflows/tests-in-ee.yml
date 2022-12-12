@@ -14,9 +14,10 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: /
     container:
       image: quay.io/ansible/awx-ee:latest
+      options:
+        -v "${{github.workspace}}":"${{github.workspace}}"
       env:
         TOXENV: ${{ matrix.test.tox_env }}
 
