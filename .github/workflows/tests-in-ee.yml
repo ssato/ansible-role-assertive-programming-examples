@@ -1,13 +1,18 @@
 ---
-# .. seealso:: https://github.com/ymyzk/tox-gh-actions
+# seealso:
+# - https://github.com/ymyzk/tox-gh-actions
+# - https://docs.github.com/en/actions/using-jobs/running-jobs-in-a-container
 #
 name: Tests in EE
 # yamllint disable-line rule:truthy
 on:
   - push
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    default:
+      run: bash
     container:
       image: quay.io/ansible/awx-ee:latest
       env:
@@ -24,6 +29,8 @@ jobs:
           # - "3.10"
 
     steps:
+      - name: Check for dockerenv file
+        run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
