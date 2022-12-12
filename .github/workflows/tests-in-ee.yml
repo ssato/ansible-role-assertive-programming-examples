@@ -12,7 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
-      run: bash
+      run:
+        shell: bash
     container:
       image: quay.io/ansible/awx-ee:latest
       env:
