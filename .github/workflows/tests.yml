@@ -12,9 +12,10 @@ jobs:
       max-parallel: 5
       matrix:
         python-version:
-          - 3.8
           - 3.9
           - "3.10"
+          - "3.11"
+          - "3.12"
 
     steps:
       - uses: actions/checkout@v3
@@ -32,5 +33,3 @@ jobs:
           pip install tox tox-gh-actions
       - name: Test with tox
         run: tox
-
-# vim:sw=2:ts=2:et:
