@@ -1,4 +1,6 @@
-#  .. seealso:: https://docs.ansible.com/ansible-lint/rules/default_rules.html
+#  .. seealso:: https://ansible.readthedocs.io/
+exclude_paths:
+  - tests/projects.d
 skip_list:
   # Some tasks uses command module instead of specific modules as intended.
   - command-instead-of-module
