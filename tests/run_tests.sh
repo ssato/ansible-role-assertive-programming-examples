@@ -8,15 +8,22 @@ scenario_name=${2:-default}
 testsdir=${0%/*}
 env_files="$(echo ${testsdir:?}/env_files.d/${ok_ng:?}/*.yml)"
 
-for env_file in ${env_files:?}; do
+# @param env_file environment file path for molecule
+function runner () {
+    local env_file=$1
+
     echo "[Info] env-file=${env_file:?}"
+    molecule --env-file ${env_file:?} \
+        test --scenario-name ${scenario_name:?}
+}
+
+
+# main
+for env_file in ${env_files:?}; do
     if test "x{ok_ng}" = "xok"; then
-	molecule --env-file ${env_file:?} \
-		test --scenario-name ${scenario_name:?}
+	runner ${env_file:?}
     else
 	# Invert the exit code because this should fail as expected.
-	molecule --env-file ${env_file} \
-		converge --scenario-name ${scenario_name:?} \
-		&& false || :
+	runner ${env_file} && false || :
     fi
 done
