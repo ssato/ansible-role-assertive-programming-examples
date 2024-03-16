@@ -7,5 +7,5 @@
   gather_facts: false
   tasks:
     - name: Do nothing meaningful
-      debug:
+      ansible.builtin.debug:
         var: sape_do_more_advanced_checks
