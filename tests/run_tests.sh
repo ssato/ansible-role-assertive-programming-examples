@@ -2,8 +2,8 @@
 set -e -o pipefail
 
 
-scenario_name=${1:-default}
-ok_ng=${2:-ok}
+ok_ng=${1:-ok}
+scenario_name=${2:-default}
 
 testsdir=${0%/*}
 env_files="$(echo ${testsdir:?}/env_files.d/${ok_ng:?}/*.yml)"
