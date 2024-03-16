@@ -5,9 +5,9 @@ dependency:
     requirements-file: requirements.yml
 lint: ../../tests/lint.sh
 # .. seealso::
-#    https://molecule.readthedocs.io/en/latest/configuration.html#delegated
+#    https://ansible.readthedocs.io/projects/molecule/configuration/
 driver:
-  name: delegated
+  name: default
   options:
     managed: false
     ansible_connection_options:
