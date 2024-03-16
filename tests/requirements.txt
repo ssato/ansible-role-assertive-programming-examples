@@ -8,4 +8,5 @@ pylint
 # ansible:
 ansible-lint
 molecule
+molecule-plugins[podman]
 yamllint
