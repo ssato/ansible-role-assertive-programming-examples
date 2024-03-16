@@ -10,7 +10,7 @@ ee_image=${2:-quay.io/ansible/awx-ee:latest}
 project_dirs=${testsdir:?}/projects.d/${ok_ng}/*
 
 # @param project_dir  project dir where playbook and test data exist
-function run_ansible_runner () {
+function runner () {
     local project_dir=$1
 
     echo "[Info] project dir: ${project_dir}"
@@ -29,11 +29,11 @@ podman pull ${ee_image} || docker pull ${ee_image}
 
 if test "${ok_ng:?}" = "ok"; then
     for prj_dir in ${project_dirs:?}; do
-        run_ansible_runner ${prj_dir}
+        runner ${prj_dir}
     done
 else
     for prj_dir in ${project_dirs:?}; do
         # Invert the exit code because this should fail as expected.
-        run_ansible_runner ${prj_dir} && false || :
+        runner ${prj_dir} && false || :
     done
 fi
