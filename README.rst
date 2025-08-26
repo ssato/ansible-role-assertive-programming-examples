@@ -1,7 +1,7 @@
 ssato.assertive_programming_examples
 ======================================
 
-Ansible example role to demonstrate asseritve programming style in Ansible.
+Ansible example role to demonstrate assertive programming style in Ansible.
 
 .. image:: https://img.shields.io/pypi/l/anyconfig.svg
    :target: https://pypi.python.org/pypi/anyconfig/
@@ -43,6 +43,14 @@ SEEALSO: tests/playbook.yml
     roles:
       - role: ssato.assertive_programming_examples
         x: 42
+
+Test
+----------------
+
+- Run tests (playbooks run on localhost) :code:`tox`
+- Run lint, checking code style: :code:`tox -e lint`
+- Run tests with using molecule[podman] (playbooks run inside containers managed by podman): :code:`tox -e podman`
+- Run tests with using ansible-runner (playbooks run inside containers managed by ansible-runner): :code:`tox -e ansible-runner`
 
 License
 -------
